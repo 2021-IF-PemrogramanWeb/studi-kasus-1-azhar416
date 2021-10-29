@@ -12,9 +12,9 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
         <!-- CSS -->
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="../css/style-login.css">
 
-        <title>Hello, world!</title>
+        <title>LOGIN</title>
     </head>
     
     <body>
@@ -23,10 +23,11 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <form onsubmit="event.preventDefault()" class="box" action="login.php">
+                        <form class="box" action="../php/login.php" method="POST">
                             <h1>Login</h1>
                             <p class="text-muted"> Please enter your login and password!</p> 
-                            <input type="text" name="" placeholder="Username"> <input type="password" name="" placeholder="Password"> 
+                            <input type="text" name="username" placeholder="Username"> 
+                            <input type="password" name="password" placeholder="Password"> 
                             <a class="forgot text-muted" href="#">Forgot password?</a> 
                             <input type="submit" name="" value="Login" href="#">
                             <div class="col-md-12">
