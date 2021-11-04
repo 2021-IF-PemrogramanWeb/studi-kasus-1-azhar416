@@ -14,7 +14,7 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/stylelogin.css">
+    <link rel="stylesheet" href="./css/stylelogin.css">
 
     <title>LOGIN</title>
 </head>
@@ -26,7 +26,7 @@
         </div>
         <h3 class="text-whitesmoke">Log In</h3>
         <div class="container-content">
-            <form class="margin-t" action="../php/login.php" method="POST">
+            <form class="margin-t" action="./php/login.php" method="POST">
                 <div class="form-group">
                     <input type="text" name="username" class="form-control" placeholder="Username" required="">
                 </div>
