@@ -15,7 +15,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/stylegrafik.css">
 
-    <title>TABEL</title>
+    <title>CHART</title>
 </head>
 
 <body class="main-bg">
