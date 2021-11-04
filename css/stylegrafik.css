@@ -1,0 +1,25 @@
+.main-bg {
+    background-color: #000000;
+}
+
+.fluid-container {
+    height: 90vh;
+    background: #424242;
+    background: linear-gradient( #212121, #424242);
+}
+
+.card {
+    background: transparent;
+}
+
+.card-header {
+    color: #00ad5f
+}
+
+.pegawai,
+.dropdown {
+    color: #00ad5f;
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+}

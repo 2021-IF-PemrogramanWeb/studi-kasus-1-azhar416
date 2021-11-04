@@ -1,0 +1,33 @@
+.main-bg {
+    background-color: #000000;
+}
+
+.card {
+    height: 90vh;
+    background: #424242;
+    background: linear-gradient( #212121, #424242);
+}
+
+.card .card-header {
+    color: #00ad5f;
+}
+
+.table {
+    border-radius: 10px;
+    overflow: hidden;
+    
+}
+
+.table tbody {
+    background-color: #000000;
+}
+
+.table th {
+    color: #00ad5f;
+    background-color: #393939;
+}
+
+.table td {
+    color: #808080;
+    background-color: #222222;
+}
