@@ -76,9 +76,11 @@
             var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
 
             var areaChartData = {
-                labels: [<?php while ($fd = mysqli_fetch_array($frm_date)) {
-                                echo '"' . $fd['from_date'] . '",';
-                            } ?>],
+                labels: [
+                    <?php while ($fd = mysqli_fetch_array($frm_date)) {
+                        echo '"' . $fd['from_date'] . '",';
+                    } ?>
+                ],
                 datasets: [{
                     label: 'Salary',
                     backgroundColor: 'rgba(60,141,188,0.9)',
