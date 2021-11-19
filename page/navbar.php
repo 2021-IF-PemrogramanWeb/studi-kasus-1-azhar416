@@ -7,5 +7,5 @@
       <a class="nav-link" href="./graphic_page.php">Graph</a>
     </li>
   </ul>
-  <a class="nav-link float-right" href="../index.php">Log Out</a>
+  <a class="nav-link float-right" href="../logout.php">Log Out</a>
 </nav>

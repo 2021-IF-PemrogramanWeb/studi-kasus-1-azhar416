@@ -1,3 +1,47 @@
+<?php
+session_start();
+
+function error($message)
+{
+    // Display the alert box 
+    echo "<script>alert('$message')</script>";
+}
+
+if (isset($_COOKIE['login']))
+{
+    if ($_COOKIE['login'] === hash('sha256', 'admin') )
+    {
+        $_SESSION['login'] = true;
+    }
+}
+
+if (isset($_SESSION["login"])) {
+    header('location: ./page/table_page.php');
+    exit;
+}
+
+if (isset($_POST["login"])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    if ($username === "admin" && $password === "12345") {
+        $_SESSION["login"] = true;
+
+        if (isset($_POST['remember']))
+        {
+            setcookie('login', hash('sha256', $username), time() + 60);
+        }
+
+        header('location: ./page/table_page.php');
+        exit;
+    } else {
+        error("Username atau Password Salah!");
+        $error = 1;
+    }
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -26,18 +70,22 @@
         </div>
         <h3 class="text-whitesmoke">Log In</h3>
         <div class="container-content">
-            <form class="margin-t" action="./php/login.php" method="POST">
+            <form class="margin-t" action="" method="post">
                 <div class="form-group">
                     <input type="text" name="username" class="form-control" placeholder="Username" required="">
                 </div>
                 <div class="form-group">
                     <input type="password" name="password" class="form-control" placeholder="Password" required="">
                 </div>
-                <button type="submit" class="form-button button-l margin-b">Sign In</button>
+                <div>
+                    <input type="checkbox" name="remember" id="remember">
+                    <label for="remember" style="color: white">Remember Me</label>
+                </div>
+                <button type="submit" name="login" class="form-button button-l margin-b">Log In</button>
 
                 <a class="text-darkyellow" href="#"><small>Forgot your password?</small></a>
                 <p class="text-whitesmoke text-center"><small>Do not have an account?</small></p>
-                
+
             </form>
         </div>
     </div>
