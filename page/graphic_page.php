@@ -31,6 +31,7 @@ if (!isset($_SESSION["login"])) {
     <?php include('./navbar.php') ?>
     <?php
     $connect = mysqli_connect("localhost", "root", "", "employees");
+    // $connect = mysqli_connect("localhost", "id17884817_root", "Kiki4t4tk4k1!", "id17884817_azhar416");
     $emp_no = mysqli_query($connect, "select emp_no from employees where emp_no >= 9998 LIMIT 15");
     $salary = mysqli_query($connect, "select salary from salaries where emp_no = '10001'");
     $frm_date = mysqli_query($connect, "select from_date from salaries where emp_no = '10001'");

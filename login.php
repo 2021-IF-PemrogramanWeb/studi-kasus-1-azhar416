@@ -1,4 +1,5 @@
 <?php
+require './function/function.php';
 session_start();
 
 function error($message)
@@ -7,9 +8,15 @@ function error($message)
     echo "<script>alert('$message')</script>";
 }
 
-if (isset($_COOKIE['login']))
+if ( isset($_COOKIE['id']) && isset($_COOKIE['key']) )
 {
-    if ($_COOKIE['login'] === hash('sha256', 'admin') )
+    $id = $_COOKIE['id'];
+    $key = $_COOKIE['key'];
+
+    $result = mysqli_query($conn, "SELECT username FROM login WHERE id = $id");
+    $row = mysqli_fetch_assoc($result);
+
+    if ($key === hash('sha256', $row['username']) )
     {
         $_SESSION['login'] = true;
     }
@@ -24,20 +31,37 @@ if (isset($_POST["login"])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    if ($username === "admin" && $password === "12345") {
-        $_SESSION["login"] = true;
+    $result = mysqli_query($conn, "SELECT * FROM login WHERE username = '$username'");
 
-        if (isset($_POST['remember']))
+    if (mysqli_num_rows($result) === 1)
+    {
+        $row = mysqli_fetch_assoc($result);
+        
+        if ( password_verify($password, $row["password"]) )
         {
-            setcookie('login', hash('sha256', $username), time() + 60);
+            $_SESSION["login"] = true;
+        
+            if (isset($_POST['remember']))
+            {
+                setcookie('id', $row['id'], time() + 60);
+                setcookie('key', hash('sha256', $username), time() + 60);
+            }
+        
+            header('location: ./page/table_page.php');
+            exit;
         }
-
-        header('location: ./page/table_page.php');
-        exit;
-    } else {
+        else
+        {
+            error("Username atau Password Salah!");
+            $error = 1;
+        }
+    }
+    else
+    {
         error("Username atau Password Salah!");
         $error = 1;
     }
+
 }
 
 ?>
@@ -83,8 +107,7 @@ if (isset($_POST["login"])) {
                 </div>
                 <button type="submit" name="login" class="form-button button-l margin-b">Log In</button>
 
-                <a class="text-darkyellow" href="#"><small>Forgot your password?</small></a>
-                <p class="text-whitesmoke text-center"><small>Do not have an account?</small></p>
+                <p class="text-whitesmoke text-center"><small>Do not have an account? <a class="text-darkyellow" href="./register.php"><small>Register</small></a> </small></p>
 
             </form>
         </div>

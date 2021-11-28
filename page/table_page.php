@@ -48,6 +48,7 @@ if (!isset($_SESSION["login"])) {
                 <tbody>
                     <?php
                     $connect = mysqli_connect("localhost", "root", "", "employees");
+                    // $connect = mysqli_connect("localhost", "id17884817_root", "Kiki4t4tk4k1!", "id17884817_azhar416");
                     $fill = mysqli_query($connect, "select emp_no, first_name as 'First Name', last_name, gender, birth_date, hire_date from employees where emp_no >= 9998 LIMIT 15");
                     while ($f = mysqli_fetch_array($fill)) {
                     ?>
